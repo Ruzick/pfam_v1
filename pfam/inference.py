@@ -34,7 +34,7 @@ def infer(args):
     label = model(one_coded.unsqueeze(0)).argmax().item()
     #map
     label2fam = {y: x for x, y in test.fam2label.items()}
-    print(f" this sequence  belongs to the {label2fam[label]} proten family.")
+    print(f"This sequence  belongs to the {label2fam[label]} protein family.")
 
 
 if __name__ == "__main__":
