@@ -12,7 +12,7 @@ def distrib_fam_sizes(dataset):
     plt.title("Distribution of family sizes for the 'train' split")
     plt.xlabel("Family size (log scale)")
     plt.ylabel("# Families")
-    plt.savefig("family_size.png")
+    plt.savefig("images/family_size.png")
     # plt.show()
 
 def distr_sequ_length(dataset):
@@ -28,7 +28,7 @@ def distr_sequ_length(dataset):
     plt.xlabel("Sequence' length (log scale)")
     plt.ylabel("# Sequences")
     plt.legend(loc="best")
-    plt.savefig("sequence_len.png")
+    plt.savefig("images/sequence_len.png")
     # plt.show()
 
 def get_amino_acid_frequencies(data):
@@ -48,5 +48,5 @@ def distrib_AA_freq(dataset):
     plt.xlabel("Amino acid codes")
     plt.ylabel("Frequency (log scale)")
     plt.yscale("log")
-    plt.savefig("aa_freq.png")
+    plt.savefig("images/aa_freq.png")
     # plt.show()
