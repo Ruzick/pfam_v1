@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
     parser = ArgumentParser()
     parser.add_argument('-p', '--model_path', type=str , default='checkpoints/best.ckpt', help = '# path of pretrained model')
-    parser.add_argument('-d', '--data_path', type=str , default='random_split/train', help = '# path of pretrained model')
+    parser.add_argument('-d', '--data_path', type=str , default='random_split/train', help = '# path of trainng data')
     parser.add_argument('-ml', '--max_lenght', type=int , default=120, help = 'max length of sequence')
     parser.add_argument ('-mpl', '--map_location', type=str , default='cpu', help = "'cpu' or 'gpu' ")
 

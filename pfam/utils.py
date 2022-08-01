@@ -50,7 +50,7 @@ def load_valdata(dataset_path,max_len=120,  num_workers=os.cpu_count(),  pin_mem
     return DataLoader(dataset, num_workers=num_workers, batch_size=batch_size,pin_memory=pin_memory, shuffle=True)  
 
 if __name__ == '__main__':
-    from .plot_fun import distrib_fam_sizes, distr_sequ_length, distrib_AA_freq
+    from plot_fun import distrib_fam_sizes, distr_sequ_length, distrib_AA_freq
     from argparse import ArgumentParser
 
     parser = ArgumentParser()

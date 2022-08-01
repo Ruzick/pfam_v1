@@ -21,9 +21,11 @@ def train(args):
     weight_decay = args.weight_decay
     milestones = args.milestones
     gamma = args.gamma
+    train_data_path = args.train_data_path
+    val_data_path = args.val_data_path
 
     #model setup
-    famdata  = FamDataset('random_split/train', max_len=max_len)
+    famdata  = FamDataset(train_data_path, max_len=max_len)
     classes = famdata.classes
     model = ProtCNN(classes)
     light = Light(model,  milestones, gamma, lr, weight_decay)
@@ -36,8 +38,8 @@ def train(args):
     trainer = pl.Trainer(gpus=num_gpus, max_epochs=num_epochs,callbacks=[checkpoint_callback])
 
     #load data
-    train_data =load_data('random_split/train', max_len=max_len, batch_size=batch_size)
-    val_data = load_valdata('random_split/dev', max_len=max_len, batch_size=batch_size)
+    train_data =load_data(train_data_path, max_len=max_len, batch_size=batch_size)
+    val_data = load_valdata(val_data_path , max_len=max_len, batch_size=batch_size)
 
     #Train
     pl.seed_everything(0)
@@ -51,6 +53,8 @@ if __name__ == "__main__":
     from argparse import ArgumentParser
 
     parser = ArgumentParser()
+    parser.add_argument('-td', '--train_data_path', type=str , default='random_split/train', help = '# path of trainng data')
+    parser.add_argument('-vd', '--val_data_path', type=str , default='random_split/dev', help = '# path of trainng data')
     parser.add_argument('-g', '--num_gpus', type=int , default=torch.cuda.device_count(), help = '# of gpus')
     parser.add_argument('-b', '--batch_size', type=int, default=250, help = 'batch size')
     parser.add_argument('-e', '--num_epochs', type=int , default=5, help = '# of epochs')
